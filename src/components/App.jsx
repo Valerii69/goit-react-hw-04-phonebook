@@ -20,17 +20,16 @@ export function App() {
   const [filter, setFilter] = useState('');
 
   const addNewContact = data => {
-    if (
-      contacts.some(
-        ({ number }) =>
-          number.toLocaleLowerCase() === data.number.toLocaleLowerCase()
-      )
-    )
-      return Notify.info(`${data.number} is already in contacts`);
-    else {
-      const newContact = { id: nanoid(), ...data };
-      setContacts(prevContacts => [...prevContacts, newContact]);
+    const isExist = contacts.some(
+      ({ number }) =>
+        number.toLocaleLowerCase() === data.number.toLocaleLowerCase()
+    );
+    if (isExist) {
+      Notify.info(`${data.number} is already in contacts`);
+      return;
     }
+    const newContact = { id: nanoid(), ...data };
+    setContacts(prevContacts => [...prevContacts, newContact]);
   };
 
   //видалення контакта
