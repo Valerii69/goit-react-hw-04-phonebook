@@ -8,7 +8,7 @@ function Form({ addNewContact }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  //перезапис state ввденних значень imput
+  //перезапис state введенних значень
   const handleChange = e => {
     const { name, value } = e.target;
 
@@ -28,17 +28,14 @@ function Form({ addNewContact }) {
   //обробник button
   const handleSubmit = event => {
     event.preventDefault();
-    // const { addNewContact } = this.props;
+
     //додавання нового контакта
     addNewContact({ name, number });
     setName('');
     setNumber('');
   };
   //очистка state
-  // reset = () => this.setState({ name: '', number: '' });
 
-  // render() {
-  //   const { name, number } = this.state;
   const patternNumber =
     /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/;
   const patternName =
